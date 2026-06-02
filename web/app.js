@@ -3,6 +3,7 @@ const output = document.querySelector("#output");
 const summary = document.querySelector("#summary");
 const statusEl = document.querySelector("#status");
 const modeEl = document.querySelector("#mode");
+const themeEl = document.querySelector("#theme");
 const tabs = [...document.querySelectorAll(".tab")];
 
 let lastResult = null;
@@ -42,6 +43,23 @@ const evidenceLabels = {
   "Needs verification": "待验证",
 };
 
+const nodeTypeLabels = {
+  end_system: "终端系统",
+  component: "部件层",
+  company: "公司",
+  evidence: "证据",
+  catalyst: "催化剂",
+};
+
+const edgeTypeLabels = {
+  supplies: "供应",
+  depends_on: "依赖",
+  competes_with: "竞争",
+  confirmed_by: "证据确认",
+  likely_benefits_from: "可能受益",
+  catalyzed_by: "催化",
+};
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -59,6 +77,11 @@ function setStatus(text, kind = "ready") {
 function updateModeGuide() {
   const guide = document.querySelector("#modeGuide");
   if (guide) guide.textContent = modeGuides[modeEl.value] || "";
+}
+
+function applyTheme(value) {
+  document.body.dataset.theme = value;
+  localStorage.setItem("chokepoint-atlas-theme", value);
 }
 
 function activeModeLabel() {
@@ -347,13 +370,64 @@ function renderGraph() {
     return `<div class="emptyState">方向比较模式暂不生成关系图谱，请切换到研究包或资料流水线。</div>`;
   }
   const graph = lastResult?.graph || {};
+  const nodes = graph.nodes || [];
+  const edges = graph.edges || [];
+  const visibleNodes = nodes.slice(0, 18);
   return `
     <div class="graphStats">
-      <div class="summaryCard"><span>节点</span><strong>${graph.nodes?.length || 0}</strong><em>系统 / 部件 / 公司 / 证据 / 催化剂</em></div>
-      <div class="summaryCard"><span>关系</span><strong>${graph.edges?.length || 0}</strong><em>depends / supplies / confirmed</em></div>
+      <div class="summaryCard"><span>节点</span><strong>${nodes.length}</strong><em>系统 / 部件 / 公司 / 证据 / 催化剂</em></div>
+      <div class="summaryCard"><span>关系</span><strong>${edges.length}</strong><em>依赖 / 供应 / 证据确认 / 催化</em></div>
       <div class="summaryCard"><span>Mermaid</span><strong>${lastResult?.graph_mermaid ? "已生成" : "无"}</strong><em>可复制到支持 Mermaid 的工具</em></div>
     </div>
-    ${renderMarkdown(lastResult?.graph_mermaid || "暂无图谱。")}
+    <div class="graphViewer">
+      <div class="tableCard full">
+        <h3>图谱节点展区</h3>
+        <div class="nodeCloud">
+          ${visibleNodes
+            .map(
+              (node) => `
+                <div class="nodePill ${escapeHtml(node.type)}">
+                  <span>${escapeHtml(nodeTypeLabels[node.type] || node.type)}</span>
+                  <strong>${escapeHtml(node.label)}</strong>
+                </div>
+              `,
+            )
+            .join("")}
+        </div>
+      </div>
+      <div class="tableCard full edgeList">
+        <h3>关键关系</h3>
+        ${renderEdgeTable(edges.slice(0, 24))}
+      </div>
+      <div class="tableCard full">
+        <h3>Mermaid 图谱源码</h3>
+        ${renderMarkdown(lastResult?.graph_mermaid || "暂无图谱。")}
+      </div>
+    </div>
+  `;
+}
+
+function renderEdgeTable(edges) {
+  if (!edges.length) return `<p>暂无关系数据。</p>`;
+  return `
+    <table>
+      <thead>
+        <tr><th>起点</th><th>关系</th><th>终点</th></tr>
+      </thead>
+      <tbody>
+        ${edges
+          .map(
+            (edge) => `
+              <tr>
+                <td>${escapeHtml(edge.from)}</td>
+                <td><span class="badge">${escapeHtml(edgeTypeLabels[edge.type] || edge.type)}</span></td>
+                <td>${escapeHtml(edge.to)}</td>
+              </tr>
+            `,
+          )
+          .join("")}
+      </tbody>
+    </table>
   `;
 }
 
@@ -417,6 +491,7 @@ tabs.forEach((tab) => {
 
 document.querySelector("#loadSample").addEventListener("click", loadSample);
 document.querySelector("#buildPack").addEventListener("click", buildPack);
+themeEl.addEventListener("change", () => applyTheme(themeEl.value));
 modeEl.addEventListener("change", () => {
   lastResult = null;
   activeTab = "overview";
@@ -426,6 +501,8 @@ modeEl.addEventListener("change", () => {
   loadSample().then(buildPack);
 });
 
+themeEl.value = localStorage.getItem("chokepoint-atlas-theme") || "museum";
+applyTheme(themeEl.value);
 updateModeGuide();
 renderSummary();
 loadSample().then(buildPack);
