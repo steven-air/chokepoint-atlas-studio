@@ -2,75 +2,65 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Chokepoint Atlas Studio</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <div class="appShell">
-      <section class="terminalTicker" aria-label="系统状态">
-        <span>CHOKEPOINT ATLAS 2.0</span>
-        <span>AI 基建瓶颈扫描</span>
-        <span>证据分层 ONLINE</span>
-        <span>图谱引擎 ONLINE</span>
-        <span>评分系统 ONLINE</span>
-        <span>本地 Web Studio</span>
-      </section>
-
-      <header class="hero">
-        <div class="heroCopy">
-          <span class="eyebrow">SERENITY-STYLE BOTTLENECK ATLAS</span>
-          <h1>AI 基建瓶颈研究中枢</h1>
-          <p>从“热门叙事”进入真实供应链：先拆终端系统，再锁定瓶颈层，用证据、图谱、评分和催化剂判断哪条线值得继续深挖。</p>
-          <div class="heroBadges" aria-label="核心功能">
-            <span>全中文界面</span>
-            <span>本地运行</span>
-            <span>无前端依赖</span>
-            <span>保留 JSON 调试</span>
-          </div>
+      <header class="appHeader">
+        <div class="navChrome" aria-label="应用状态">
+          <span>Chokepoint Atlas</span>
+          <span>本地 Web Studio</span>
+          <span>2.0</span>
         </div>
-        <div class="heroPanel strategyPanel" aria-label="投资逻辑框架">
-          <div class="strategyHeader">投资逻辑框架</div>
-          <div class="moduleItem ready">
-            <strong>01 深度研究供应链</strong>
-            <span>从材料、设备、器件、模组到系统，找到最容易被忽视的环节。</span>
+        <div class="hero">
+          <div class="heroCopy">
+            <span class="eyebrow">AI 基建瓶颈研究</span>
+            <h1>瓶颈地图</h1>
+            <p>把零散材料整理成研究包、方向比较和资料流水线，用证据、评分、图谱和催化剂快速判断下一条值得深挖的供应链线索。</p>
           </div>
-          <div class="moduleItem ready">
-            <strong>02 锁定瓶颈企业</strong>
-            <span>寻找技术领先、供给紧、市场认知不足的执行者。</span>
-          </div>
-          <div class="moduleItem ready">
-            <strong>03 判断催化剂</strong>
-            <span>订单、认证、产能、行业加速和资金轮动共同验证。</span>
-          </div>
-          <div class="moduleItem ready">
-            <strong>04 重仓 + 长期持有</strong>
-            <span>不是追热点，而是跟踪被低估的高确定性瓶颈。</span>
-          </div>
+          <aside class="heroPanel strategyPanel" aria-label="研究流程">
+            <div class="strategyHeader">
+              <span>研究流程</span>
+              <strong>4 步</strong>
+            </div>
+            <div class="moduleItem ready">
+              <strong>01 拆解终端系统</strong>
+              <span>从材料、设备、器件、模组到系统，定位真实约束层。</span>
+            </div>
+            <div class="moduleItem ready">
+              <strong>02 锁定瓶颈企业</strong>
+              <span>寻找技术领先、供给紧、市场认知不足的执行者。</span>
+            </div>
+            <div class="moduleItem ready">
+              <strong>03 验证催化剂</strong>
+              <span>用订单、认证、产能、行业加速和资金轮动交叉确认。</span>
+            </div>
+            <div class="moduleItem ready">
+              <strong>04 输出研究包</strong>
+              <span>保留结构化 JSON，方便复盘、调试和二次开发。</span>
+            </div>
+          </aside>
         </div>
       </header>
 
-      <section class="modeDeck" aria-label="模式切换卡片">
+      <section class="modeDeck" aria-label="模式切换">
         <button class="modeCard active" data-mode-card="pack">
-          <span>01</span>
-          <h2>研究包</h2>
-          <p>输入单条赛道 JSON，生成 Quick Scan、证据备忘录、评分卡、关系图谱和催化剂观察。</p>
+          <span>研究包</span>
+          <h2>单条赛道分析</h2>
+          <p>生成 Quick Scan、证据备忘录、评分卡、关系图谱和催化剂观察。</p>
         </button>
         <button class="modeCard" data-mode-card="compare">
-          <span>02</span>
-          <h2>方向比较</h2>
-          <p>把多条赛道放在同一张排名表里，用统一评分判断下一步研究优先级。</p>
+          <span>方向比较</span>
+          <h2>多赛道排序</h2>
+          <p>把多条方向放进统一评分表，判断下一步研究优先级。</p>
         </button>
         <button class="modeCard" data-mode-card="pipeline">
-          <span>03</span>
-          <h2>资料流水线</h2>
-          <p>从松散资料包生成 draft，再进入最终研究包，适合把外部材料沉淀成结构化结果。</p>
+          <span>资料流水线</span>
+          <h2>从材料到研究包</h2>
+          <p>先整理松散资料，再生成最终研究包，适合外部素材沉淀。</p>
         </button>
-        <article class="modeCard locked">
-          <span>04</span>
-          <h2>原始数据舱</h2>
-          <p>保留完整 JSON 编辑和原始结果查看，方便二开、调试和接入其他 Agent。</p>
-        </article>
       </section>
 
       <section class="toolbar" aria-label="运行控制">
@@ -83,14 +73,14 @@
           </select>
         </label>
         <label class="field" for="theme">
-          <span>视觉风格</span>
+          <span>外观</span>
           <select id="theme">
-            <option value="museum">蓝色科技馆</option>
-            <option value="neon">霓虹投资屏</option>
-            <option value="daylight">明亮研究台</option>
+            <option value="auto">自动</option>
+            <option value="iosLight">iOS 浅色</option>
+            <option value="iosDark">iOS 深色</option>
           </select>
         </label>
-        <button id="loadSample">加载示例</button>
+        <button id="loadSample" class="secondary">载入示例</button>
         <button id="buildPack" class="primary">运行分析</button>
         <span id="status" class="status ready">就绪</span>
         <p id="modeGuide" class="modeGuide">研究包模式会生成一套完整的瓶颈研究结果。</p>
@@ -100,14 +90,21 @@
         <section class="editor panel">
           <div class="panelHeader">
             <div>
+              <span class="sectionKicker">Input</span>
               <h2>输入 JSON</h2>
               <p>保留原始 JSON 编辑能力，适合直接调试 2.0 数据结构。</p>
             </div>
           </div>
-          <textarea id="inputJson" spellcheck="false"></textarea>
+          <textarea id="inputJson" spellcheck="false" aria-label="输入 JSON"></textarea>
         </section>
 
         <section class="results panel">
+          <div class="panelHeader resultHeader">
+            <div>
+              <span class="sectionKicker">Output</span>
+              <h2>结果</h2>
+            </div>
+          </div>
           <div id="summary" class="summaryGrid" aria-live="polite"></div>
           <nav class="tabs" aria-label="结果标签">
             <button class="tab active" data-tab="overview">总览</button>

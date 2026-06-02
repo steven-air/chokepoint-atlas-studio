@@ -9,7 +9,8 @@ const modeCards = [...document.querySelectorAll("[data-mode-card]")];
 
 let lastResult = null;
 let activeTab = "overview";
-const themeStorageKey = "chokepoint-atlas-theme-v2";
+const themeStorageKey = "chokepoint-atlas-theme-v3";
+const supportedThemes = new Set(["auto", "iosLight", "iosDark"]);
 
 const scoreLabels = {
   constraint_score: "瓶颈强度",
@@ -83,8 +84,9 @@ function updateModeGuide() {
 }
 
 function applyTheme(value) {
-  document.body.dataset.theme = value;
-  localStorage.setItem(themeStorageKey, value);
+  const theme = supportedThemes.has(value) ? value : "auto";
+  document.body.dataset.theme = theme;
+  localStorage.setItem(themeStorageKey, theme);
 }
 
 function activeModeLabel() {
@@ -510,7 +512,8 @@ modeEl.addEventListener("change", () => {
   loadSample().then(buildPack);
 });
 
-themeEl.value = localStorage.getItem(themeStorageKey) || "neon";
+const savedTheme = localStorage.getItem(themeStorageKey);
+themeEl.value = supportedThemes.has(savedTheme) ? savedTheme : "auto";
 applyTheme(themeEl.value);
 updateModeGuide();
 renderSummary();
