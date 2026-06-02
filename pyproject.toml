@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chokepoint-atlas-studio"
+version = "0.2.0"
+description = "Local CLI and browser studio for Chokepoint Atlas research packs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "steven-air", email = "air9@edu.120.it.com" }]
+dependencies = []
+
+[project.scripts]
+chokepoint-atlas = "chokepoint_atlas.cli:main"
+atlas = "chokepoint_atlas.cli:main"
+
+[tool.setuptools]
+packages = ["chokepoint_atlas"]
+
