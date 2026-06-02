@@ -8,6 +8,7 @@ const tabs = [...document.querySelectorAll(".tab")];
 
 let lastResult = null;
 let activeTab = "overview";
+const themeStorageKey = "chokepoint-atlas-theme-v2";
 
 const scoreLabels = {
   constraint_score: "瓶颈强度",
@@ -81,7 +82,7 @@ function updateModeGuide() {
 
 function applyTheme(value) {
   document.body.dataset.theme = value;
-  localStorage.setItem("chokepoint-atlas-theme", value);
+  localStorage.setItem(themeStorageKey, value);
 }
 
 function activeModeLabel() {
@@ -501,7 +502,7 @@ modeEl.addEventListener("change", () => {
   loadSample().then(buildPack);
 });
 
-themeEl.value = localStorage.getItem("chokepoint-atlas-theme") || "museum";
+themeEl.value = localStorage.getItem(themeStorageKey) || "neon";
 applyTheme(themeEl.value);
 updateModeGuide();
 renderSummary();

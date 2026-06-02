@@ -74,6 +74,78 @@ body[data-theme="daylight"] {
   --shadow: 0 18px 42px rgba(31, 64, 108, 0.12);
 }
 
+body[data-theme="daylight"] .heroCopy,
+body[data-theme="daylight"] .heroPanel,
+body[data-theme="daylight"] .toolbar,
+body[data-theme="daylight"] .panel {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+body[data-theme="daylight"] .heroCopy {
+  background:
+    linear-gradient(135deg, rgba(17, 109, 255, 0.12), rgba(0, 183, 199, 0.08) 42%, rgba(112, 72, 232, 0.08)),
+    #ffffff;
+}
+
+body[data-theme="daylight"] h1 {
+  color: #081a31;
+  text-shadow: none;
+}
+
+body[data-theme="daylight"] select,
+body[data-theme="daylight"] button {
+  background: #ffffff;
+  color: #102033;
+}
+
+body[data-theme="daylight"] button:hover {
+  background: #f0f6ff;
+  color: var(--accent-ink);
+}
+
+body[data-theme="daylight"] button.primary,
+body[data-theme="daylight"] button.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, #116dff, #00a5b6);
+}
+
+body[data-theme="daylight"] button.primary:hover,
+body[data-theme="daylight"] button.active:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, #0b56cc, #008d9b);
+}
+
+body[data-theme="daylight"] textarea,
+body[data-theme="daylight"] .markdown,
+body[data-theme="daylight"] .jsonBlock {
+  background: #ffffff;
+  color: #102033;
+}
+
+body[data-theme="daylight"] .summaryCard,
+body[data-theme="daylight"] .contentCard,
+body[data-theme="daylight"] .tableCard,
+body[data-theme="daylight"] .nodePill {
+  background: #ffffff;
+  color: #102033;
+}
+
+body[data-theme="daylight"] .heroBadges span {
+  background: rgba(17, 109, 255, 0.1);
+  color: #0a4ab8;
+}
+
+body[data-theme="daylight"] .eyebrow,
+body[data-theme="daylight"] .badge,
+body[data-theme="daylight"] .nodePill span {
+  color: var(--accent-ink);
+}
+
+body[data-theme="daylight"] .status.ready,
+body[data-theme="daylight"] .status.success {
+  color: var(--accent-ink);
+}
+
 * {
   box-sizing: border-box;
 }
