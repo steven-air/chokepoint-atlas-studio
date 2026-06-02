@@ -13,30 +13,30 @@ function setStatus(text) {
 
 function render() {
   if (!lastResult) {
-    output.textContent = "Run the current input to see results.";
+    output.textContent = "运行当前输入后查看结果。";
     return;
   }
   const views = {
-    quick: lastResult.quick_scan || lastResult.ranked_lane_table || "No quick view for this mode.",
-    memo: lastResult.evidence_memo || lastResult.lane_compare_memo || "No memo for this mode.",
+    quick: lastResult.quick_scan || lastResult.ranked_lane_table || "当前模式没有快速视图。",
+    memo: lastResult.evidence_memo || lastResult.lane_compare_memo || "当前模式没有备忘录。",
     score: JSON.stringify(lastResult.scorecard || lastResult.lane_ranking || lastResult.extraction_report || {}, null, 2),
-    graph: lastResult.graph_mermaid || "No graph for this mode.",
+    graph: lastResult.graph_mermaid || "当前模式没有图谱。",
     json: JSON.stringify(lastResult, null, 2),
   };
   output.textContent = views[activeTab] || "";
 }
 
 async function loadSample() {
-  setStatus("Loading sample...");
+  setStatus("正在加载示例...");
   const response = await fetch(`/api/sample?kind=${encodeURIComponent(modeEl.value)}`);
   const payload = await response.json();
   input.value = JSON.stringify(payload, null, 2);
-  setStatus("Sample loaded");
+  setStatus("示例已加载");
 }
 
 async function buildPack() {
   try {
-    setStatus("Building...");
+    setStatus("正在运行...");
     const payload = JSON.parse(input.value);
     const response = await fetch(`/api/build?mode=${encodeURIComponent(modeEl.value)}`, {
       method: "POST",
@@ -45,15 +45,15 @@ async function buildPack() {
     });
     const result = await response.json();
     if (!result.ok) {
-      throw new Error(result.error || "Build failed");
+      throw new Error(result.error || "运行失败");
     }
     lastResult = result;
-    setStatus("Built successfully");
+    setStatus("运行成功");
     render();
   } catch (error) {
     lastResult = null;
     output.textContent = String(error.message || error);
-    setStatus("Error");
+    setStatus("错误");
   }
 }
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,37 +10,37 @@
     <header class="topbar">
       <div>
         <h1>Chokepoint Atlas Studio</h1>
-        <p>Turn supply-chain lane JSON into a research pack, scorecard, memo, and graph.</p>
+        <p>把供应链方向 JSON 转成研究包、评分卡、证据备忘录和图谱。</p>
       </div>
       <div class="actions">
         <label class="modePicker" for="mode">
-          <span>Mode</span>
+          <span>模式</span>
           <select id="mode">
-            <option value="pack">Research Pack</option>
-            <option value="compare">Lane Compare</option>
-            <option value="pipeline">Source Pipeline</option>
+            <option value="pack">研究包</option>
+            <option value="compare">方向比较</option>
+            <option value="pipeline">资料流水线</option>
           </select>
         </label>
-        <button id="loadSample">Load sample</button>
-        <button id="buildPack" class="primary">Run</button>
+        <button id="loadSample">加载示例</button>
+        <button id="buildPack" class="primary">运行</button>
       </div>
     </header>
 
     <main class="workspace">
       <section class="editor">
         <div class="panelHeader">
-          <h2>Input JSON</h2>
-          <span id="status">Ready</span>
+          <h2>输入 JSON</h2>
+          <span id="status">就绪</span>
         </div>
         <textarea id="inputJson" spellcheck="false"></textarea>
       </section>
 
       <section class="results">
-        <nav class="tabs" aria-label="Result tabs">
-          <button class="tab active" data-tab="quick">Quick Scan</button>
-          <button class="tab" data-tab="memo">Evidence Memo</button>
-          <button class="tab" data-tab="score">Scorecard</button>
-          <button class="tab" data-tab="graph">Graph</button>
+        <nav class="tabs" aria-label="结果标签">
+          <button class="tab active" data-tab="quick">快速扫描</button>
+          <button class="tab" data-tab="memo">证据备忘录</button>
+          <button class="tab" data-tab="score">评分卡</button>
+          <button class="tab" data-tab="graph">图谱</button>
           <button class="tab" data-tab="json">JSON</button>
         </nav>
         <pre id="output"></pre>
