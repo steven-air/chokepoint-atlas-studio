@@ -1,5 +1,7 @@
 # Chokepoint Atlas Studio
 
+[中文说明](./README_CN.md)
+
 Chokepoint Atlas Studio is a fork of Chokepoint Atlas with two practical entry points:
 
 - a Python CLI for repeatable research-pack generation
