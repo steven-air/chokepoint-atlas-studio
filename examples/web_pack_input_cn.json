@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "pack_id": "ai-factory-cn-demo",
+    "title": "AI Factory 瓶颈研究中文示例",
+    "as_of_date": "2026-06-02",
+    "analyst": "Chokepoint Atlas",
+    "horizon": "6-18 个月",
+    "geography": "全球"
+  },
+  "thesis": {
+    "supertrend": "AI 基建从单颗芯片竞争扩展到整机柜、供电、冷却、封装、测试和云端交付能力。",
+    "end_system": "AI Factory 整体交付系统",
+    "lane": "HBM 测试与先进封装支撑工具",
+    "thesis_sentence": "更值得优先研究的不是 GPU 本身，而是 HBM 测试、先进封装检测和支撑工具这些必须先扩产的使能层。",
+    "bottleneck_call": "HBM 相关测试吞吐和先进封装检测仍是 AI Factory 规模化交付前的关键瓶颈。",
+    "weakest_assumption": "AI 服务器需求会持续转化为 HBM 与先进封装资本开支，而不是短期库存周期。",
+    "thesis_breaker": "如果先进封装扩产放缓，或 HBM 需求比预期更快降温，这条支撑工具赛道的优先级会下降。"
+  },
+  "stack_layers": [
+    {"id": "L4", "label": "云端部署与 AI Factory 交付", "items": ["云服务商", "企业 AI 工厂", "算力租赁平台"]},
+    {"id": "L3", "label": "整机柜与数据中心集成", "items": ["机柜", "网络", "电力接入", "液冷"]},
+    {"id": "L2", "label": "先进封装与组装", "items": ["CoWoS", "混合键合", "OSAT", "封装基板"]},
+    {"id": "L1", "label": "测试、探针与检测", "items": ["HBM 测试", "探针卡", "先进封装检测", "计量"]},
+    {"id": "L0", "label": "核心硅与存储", "items": ["GPU", "HBM", "交换芯片"]}
+  ],
+  "bottlenecks": [
+    {"label": "HBM 测试吞吐", "type": "测试产能", "why_it_matters": "测试能力不足会拖慢高端 AI 加速器交付。"},
+    {"label": "先进封装检测", "type": "良率检测", "why_it_matters": "封装良率与缺陷检测决定产能爬坡速度。"},
+    {"label": "液冷与供电改造", "type": "站点交付", "why_it_matters": "站点就绪速度会限制 AI Factory 部署。"}
+  ],
+  "evidence": [
+    {
+      "id": "ev_form_hbm",
+      "tier": "A",
+      "entity": "FormFactor",
+      "title": "HBM 测试需求继续增长",
+      "summary": "公司管理层多次提到 DRAM 与 HBM 测试需求，对 AI 相关测试设备形成支撑。",
+      "url": "https://example.com/formfactor-hbm"
+    },
+    {
+      "id": "ev_camt_packaging",
+      "tier": "B",
+      "entity": "Camtek",
+      "title": "先进封装检测需求受 AI 拉动",
+      "summary": "行业资料显示，先进封装和混合键合对检测设备的要求提升，检测层成为扩产支撑点。",
+      "url": "https://example.com/camtek-packaging"
+    },
+    {
+      "id": "ev_power_cooling",
+      "tier": "B",
+      "entity": "Vertiv",
+      "title": "AI 数据中心提高供电和冷却密度要求",
+      "summary": "AI 机柜功率密度提升，使供电、液冷和站点改造成为部署节奏的重要变量。",
+      "url": "https://example.com/power-cooling"
+    }
+  ],
+  "companies": [
+    {
+      "ticker": "FORM",
+      "name": "FormFactor",
+      "role": "HBM 测试使能层",
+      "stack_layer": "L1",
+      "market_cap_usd_b": 9.14,
+      "constraint_score": 4,
+      "evidence_score": 5,
+      "consensus_score": 3,
+      "mispricing_score": 3,
+      "catalyst_score": 4,
+      "risk": "中等"
+    },
+    {
+      "ticker": "CAMT",
+      "name": "Camtek",
+      "role": "先进封装检测",
+      "stack_layer": "L1",
+      "market_cap_usd_b": 7.36,
+      "constraint_score": 4,
+      "evidence_score": 4,
+      "consensus_score": 4,
+      "mispricing_score": 4,
+      "catalyst_score": 4,
+      "risk": "中高"
+    },
+    {
+      "ticker": "AMKR",
+      "name": "Amkor",
+      "role": "先进封装和 OSAT 执行层",
+      "stack_layer": "L2",
+      "market_cap_usd_b": 6.2,
+      "constraint_score": 3,
+      "evidence_score": 3,
+      "consensus_score": 3,
+      "mispricing_score": 3,
+      "catalyst_score": 3,
+      "risk": "中等"
+    }
+  ],
+  "catalysts": [
+    {"label": "HBM 与先进封装扩产更新", "type": "财报 / 资本开支", "watch_for": "关注管理层是否继续提到 AI、HBM、packaging ramp 和需求大于供给。"},
+    {"label": "AI 数据中心部署节奏", "type": "产业部署", "watch_for": "关注供电、液冷、站点就绪是否成为交付瓶颈。"}
+  ]
+}

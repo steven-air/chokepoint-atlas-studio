@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "pack_id": "ai-factory-source-cn-demo",
+    "title": "AI Factory 资料流水线中文示例",
+    "as_of_date": "2026-06-02",
+    "analyst": "Chokepoint Atlas"
+  },
+  "thesis": {
+    "supertrend": "AI Factory 建设从芯片扩展到整机柜、封装、测试、供电和冷却。",
+    "end_system": "AI Factory 整体交付系统",
+    "lane": "HBM 测试与先进封装支撑工具",
+    "thesis_sentence": "AI Factory 扩容前，测试、检测和先进封装支撑层必须先扩产。",
+    "bottleneck_call": "HBM 测试吞吐和先进封装检测是当前值得优先观察的瓶颈。",
+    "weakest_assumption": "AI 相关封装和测试支出持续，而不是短期库存周期。",
+    "thesis_breaker": "如果 HBM 或先进封装扩产降速，赛道优先级下降。"
+  },
+  "stack_layers": [
+    {"id": "L3", "label": "AI Factory 部署", "items": ["云平台", "企业 AI 工厂"]},
+    {"id": "L2", "label": "先进封装", "items": ["CoWoS", "OSAT", "hybrid bonding"]},
+    {"id": "L1", "label": "测试与检测", "items": ["HBM test", "probe", "inspection"]},
+    {"id": "L0", "label": "核心硅和 HBM", "items": ["GPU", "HBM"]}
+  ],
+  "bottlenecks": [
+    {"label": "HBM 测试吞吐", "type": "测试产能", "why_it_matters": "测试能力不足会拖慢高端 AI 加速器交付。"},
+    {"label": "先进封装检测", "type": "良率检测", "why_it_matters": "封装良率与缺陷检测决定产能爬坡速度。"}
+  ],
+  "companies": [
+    {"ticker": "FORM", "name": "FormFactor", "role": "HBM 测试", "stack_layer": "L1", "market_cap_usd_b": 9.14, "risk": "中等", "constraint_hint": 4, "consensus_hint": 3, "mispricing_hint": 3},
+    {"ticker": "CAMT", "name": "Camtek", "role": "先进封装检测", "stack_layer": "L1", "market_cap_usd_b": 7.36, "risk": "中高", "constraint_hint": 4, "consensus_hint": 4, "mispricing_hint": 4}
+  ],
+  "sources": [
+    {
+      "source_type": "earnings call",
+      "entity": "FormFactor",
+      "title": "HBM test demand in AI ramp",
+      "body": "管理层提到 AI 和 HBM test 需求，DRAM testing demand 保持强劲，并且 production ramp 仍在继续。",
+      "url": "https://example.com/formfactor-call"
+    },
+    {
+      "source_type": "industry article",
+      "entity": "Camtek",
+      "title": "advanced packaging inspection and AI demand",
+      "body": "行业资料显示 advanced packaging、inspection 和 metrology 在 AI packaging ramp 中变得更关键。",
+      "url": "https://example.com/camtek-article"
+    }
+  ]
+}

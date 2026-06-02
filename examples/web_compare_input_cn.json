@@ -1,0 +1,63 @@
+{
+  "lanes": [
+    {
+      "meta": {"pack_id": "cn_hbm_test_packaging", "title": "HBM 测试与先进封装支撑", "as_of_date": "2026-06-02"},
+      "thesis": {
+        "supertrend": "AI Factory 建设继续推高存储、封装和部署基础设施压力。",
+        "end_system": "AI Factory 整体交付系统",
+        "lane": "HBM 测试与先进封装支撑工具",
+        "thesis_sentence": "测试、检测和封装支撑工具是 AI Factory 扩容前必须先扩产的使能层。",
+        "bottleneck_call": "HBM 测试吞吐和先进封装检测仍是关键瓶颈。",
+        "weakest_assumption": "HBM 需求继续转化为封装和测试资本开支。",
+        "thesis_breaker": "如果封装支出放缓，支撑工具层会快速降优先级。"
+      },
+      "stack_layers": [
+        {"id": "L2", "label": "封装与组装", "items": ["OSAT", "CoWoS", "hybrid bonding"]},
+        {"id": "L1", "label": "测试与检测", "items": ["FormFactor", "Camtek", "probe card"]},
+        {"id": "L0", "label": "核心硅与 HBM", "items": ["GPU", "HBM"]}
+      ],
+      "bottlenecks": [
+        {"label": "HBM 测试吞吐", "type": "测试产能", "why_it_matters": "测试能力不足会拖慢高端 AI 加速器交付。"},
+        {"label": "先进封装检测", "type": "良率检测", "why_it_matters": "先进封装检测决定产能爬坡速度。"}
+      ],
+      "evidence": [
+        {"id": "ev_form", "tier": "A", "entity": "FormFactor", "title": "HBM 测试需求", "summary": "管理层提到 HBM 和 DRAM 测试需求。", "url": "https://example.com/form"},
+        {"id": "ev_camt", "tier": "B", "entity": "Camtek", "title": "先进封装检测", "summary": "行业资料显示先进封装检测需求提升。", "url": "https://example.com/camt"}
+      ],
+      "companies": [
+        {"ticker": "FORM", "name": "FormFactor", "role": "HBM 测试", "stack_layer": "L1", "market_cap_usd_b": 9.14, "constraint_score": 4, "evidence_score": 5, "consensus_score": 3, "mispricing_score": 3, "catalyst_score": 4, "risk": "中等"},
+        {"ticker": "CAMT", "name": "Camtek", "role": "先进封装检测", "stack_layer": "L1", "market_cap_usd_b": 7.36, "constraint_score": 4, "evidence_score": 4, "consensus_score": 4, "mispricing_score": 4, "catalyst_score": 4, "risk": "中高"}
+      ],
+      "catalysts": [{"label": "HBM / packaging ramp", "type": "财报", "watch_for": "继续观察扩产和需求强度。"}]
+    },
+    {
+      "meta": {"pack_id": "cn_power_cooling", "title": "AI 数据中心供电与液冷", "as_of_date": "2026-06-02"},
+      "thesis": {
+        "supertrend": "AI 机柜功率密度持续提升，站点交付能力成为扩容约束。",
+        "end_system": "AI 数据中心电力和热管理系统",
+        "lane": "供电改造与液冷部署",
+        "thesis_sentence": "当算力需求超过站点准备速度时，供电和液冷会成为 AI Factory 的交付瓶颈。",
+        "bottleneck_call": "供电密度升级和液冷部署节奏可能限制 AI 数据中心上线。",
+        "weakest_assumption": "AI 机柜功率密度继续上行。",
+        "thesis_breaker": "如果标准风冷和现有供电足够支撑部署，这条线优先级下降。"
+      },
+      "stack_layers": [
+        {"id": "L2", "label": "站点改造", "items": ["变压器", "配电", "施工"]},
+        {"id": "L1", "label": "冷却系统", "items": ["液冷", "CDU", "热交换"]},
+        {"id": "L0", "label": "AI 机柜", "items": ["GPU rack", "network"]}
+      ],
+      "bottlenecks": [
+        {"label": "站点电力接入", "type": "电力基础设施", "why_it_matters": "电力接入和配电升级会影响 AI 数据中心上线时间。"},
+        {"label": "液冷部署", "type": "热管理", "why_it_matters": "液冷部署速度影响高功率机柜落地。"}
+      ],
+      "evidence": [
+        {"id": "ev_vrt", "tier": "B", "entity": "Vertiv", "title": "AI 电力和冷却需求", "summary": "行业资料显示 AI/HPC 对供电和冷却提出更高要求。", "url": "https://example.com/vrt"}
+      ],
+      "companies": [
+        {"ticker": "VRT", "name": "Vertiv", "role": "数据中心电力和冷却", "stack_layer": "L1", "market_cap_usd_b": 28, "constraint_score": 4, "evidence_score": 3, "consensus_score": 2, "mispricing_score": 2, "catalyst_score": 4, "risk": "中等"},
+        {"ticker": "ETN", "name": "Eaton", "role": "电力设备", "stack_layer": "L2", "market_cap_usd_b": 120, "constraint_score": 4, "evidence_score": 3, "consensus_score": 2, "mispricing_score": 2, "catalyst_score": 3, "risk": "中低"}
+      ],
+      "catalysts": [{"label": "数据中心电力订单", "type": "订单 / 财报", "watch_for": "观察 AI 项目是否继续推动供电升级。"}]
+    }
+  ]
+}

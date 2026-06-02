@@ -10,29 +10,58 @@
     <div class="appShell">
       <header class="hero">
         <div class="heroCopy">
-          <span class="eyebrow">Chokepoint Atlas 2.0</span>
-          <h1>AI 基建瓶颈研究工作台</h1>
-          <p>把供应链方向 JSON 转成可复盘的研究包：证据分层、关系图谱、评分卡、催化剂跟踪和多赛道比较。</p>
+          <span class="eyebrow">Chokepoint Atlas 2.0 · 科技馆模式</span>
+          <h1>AI 基建瓶颈研究展厅</h1>
+          <p>像参观一座产业科技馆一样拆解 AI 基建：从终端系统进入供应链展区，定位瓶颈层，查看证据强度、关系图谱、评分卡和催化剂。</p>
+          <div class="heroBadges" aria-label="核心功能">
+            <span>全中文界面</span>
+            <span>本地运行</span>
+            <span>无前端依赖</span>
+            <span>保留 JSON 调试</span>
+          </div>
         </div>
         <div class="heroPanel" aria-label="2.0 模块状态">
           <div class="moduleItem ready">
-            <strong>Evidence</strong>
-            <span>证据分层</span>
+            <strong>证据舱</strong>
+            <span>把财报、新闻、资料按强度分层，不再混着看。</span>
           </div>
           <div class="moduleItem ready">
-            <strong>Graph</strong>
-            <span>关系图谱</span>
+            <strong>图谱厅</strong>
+            <span>把公司、部件、证据、催化剂连成可复用关系。</span>
           </div>
           <div class="moduleItem ready">
-            <strong>Scoring</strong>
-            <span>优先级评分</span>
+            <strong>评分台</strong>
+            <span>用五个维度比较赛道和候选公司优先级。</span>
           </div>
           <div class="moduleItem ready">
-            <strong>Output</strong>
-            <span>研究包输出</span>
+            <strong>输出馆</strong>
+            <span>同时生成总览、备忘录、图谱、评分和 JSON。</span>
           </div>
         </div>
       </header>
+
+      <section class="exhibitStrip" aria-label="功能介绍">
+        <article class="exhibitCard">
+          <span>01</span>
+          <h2>研究包</h2>
+          <p>输入单条赛道 JSON，生成 Quick Scan、证据备忘录、评分卡、关系图谱和催化剂观察。</p>
+        </article>
+        <article class="exhibitCard">
+          <span>02</span>
+          <h2>方向比较</h2>
+          <p>把多条赛道放在同一张排名表里，用统一评分判断下一步研究优先级。</p>
+        </article>
+        <article class="exhibitCard">
+          <span>03</span>
+          <h2>资料流水线</h2>
+          <p>从松散资料包生成 draft，再进入最终研究包，适合把外部材料沉淀成结构化结果。</p>
+        </article>
+        <article class="exhibitCard">
+          <span>04</span>
+          <h2>原始数据舱</h2>
+          <p>保留完整 JSON 编辑和原始结果查看，方便二开、调试和接入其他 Agent。</p>
+        </article>
+      </section>
 
       <section class="toolbar" aria-label="运行控制">
         <label class="field" for="mode">
@@ -46,6 +75,7 @@
         <button id="loadSample">加载示例</button>
         <button id="buildPack" class="primary">运行分析</button>
         <span id="status" class="status ready">就绪</span>
+        <p id="modeGuide" class="modeGuide">研究包模式会生成一套完整的瓶颈研究结果。</p>
       </section>
 
       <main class="workspace">

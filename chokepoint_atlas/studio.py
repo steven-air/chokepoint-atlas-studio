@@ -13,9 +13,10 @@ WEB_DIR = REPO_ROOT / "web"
 SCRIPTS_DIR = REPO_ROOT / "scripts"
 EXAMPLE_PATH = REPO_ROOT / "examples" / "ai_factory_lane_input.json"
 EXAMPLES = {
-    "pack": REPO_ROOT / "examples" / "ai_factory_lane_input.json",
-    "compare": REPO_ROOT / "examples" / "lane_compare_input.json",
-    "sources": REPO_ROOT / "examples" / "source_bundle_input.json",
+    "pack": REPO_ROOT / "examples" / "web_pack_input_cn.json",
+    "compare": REPO_ROOT / "examples" / "web_compare_input_cn.json",
+    "pipeline": REPO_ROOT / "examples" / "web_source_bundle_input_cn.json",
+    "sources": REPO_ROOT / "examples" / "web_source_bundle_input_cn.json",
 }
 
 

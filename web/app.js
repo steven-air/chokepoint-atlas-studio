@@ -22,6 +22,26 @@ const scoreLabels = {
   catalyst: "催化剂",
 };
 
+const modeGuides = {
+  pack: "研究包模式：从单条供应链方向生成总览、证据、评分、图谱和催化剂观察。",
+  compare: "方向比较模式：把多条赛道放到同一张优先级表里，决定下一步研究顺序。",
+  pipeline: "资料流水线模式：先把松散资料整理成 draft，再生成最终研究包。",
+};
+
+const priorityLabels = {
+  "Very high-priority lane": "极高优先级",
+  "High-priority lane": "高优先级",
+  "Watch closely": "重点观察",
+  "Lower-priority lane for now": "暂低优先级",
+};
+
+const evidenceLabels = {
+  Confirmed: "强证据",
+  Inferred: "推断证据",
+  Weak: "弱证据",
+  "Needs verification": "待验证",
+};
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -36,14 +56,20 @@ function setStatus(text, kind = "ready") {
   statusEl.className = `status ${kind}`;
 }
 
+function updateModeGuide() {
+  const guide = document.querySelector("#modeGuide");
+  if (guide) guide.textContent = modeGuides[modeEl.value] || "";
+}
+
 function activeModeLabel() {
   return modeEl.options[modeEl.selectedIndex]?.textContent || "研究包";
 }
 
 function priorityBadge(priority) {
   const text = String(priority || "未评级");
+  const label = priorityLabels[text] || text;
   const cls = text.includes("high") || text.includes("High") ? "" : text.includes("Lower") ? "danger" : "warn";
-  return `<span class="badge ${cls}">${escapeHtml(text)}</span>`;
+  return `<span class="badge ${cls}">${escapeHtml(label)}</span>`;
 }
 
 function scoreBar(label, value) {
@@ -64,8 +90,37 @@ function renderScoreBars(scores = {}) {
   return `<div class="metricList">${keys.map((key) => scoreBar(scoreLabels[key] || key, scores[key])).join("")}</div>`;
 }
 
+function localizeMarkdown(text) {
+  return String(text || "")
+    .replaceAll("# Quick Scan -", "# 快速扫描 -")
+    .replaceAll("# Evidence Memo -", "# 证据备忘录 -")
+    .replaceAll("# Catalyst Watch -", "# 催化剂观察 -")
+    .replaceAll("# Graph Mermaid -", "# Mermaid 图谱 -")
+    .replaceAll("# Lane Compare Memo", "# 方向比较备忘录")
+    .replaceAll("# Ranked Lane Table", "# 赛道排名表")
+    .replaceAll("## Thesis", "## 核心 Thesis")
+    .replaceAll("## Bottleneck Call", "## 瓶颈判断")
+    .replaceAll("## Lane Score", "## 赛道评分")
+    .replaceAll("## Top Names", "## 候选名称")
+    .replaceAll("## Evidence", "## 证据")
+    .replaceAll("## Key Companies", "## 关键公司")
+    .replaceAll("## Graph Summary", "## 图谱摘要")
+    .replaceAll("## Next Events", "## 后续事件")
+    .replaceAll("## Bullish Confirmation", "## 正向确认")
+    .replaceAll("## Bearish Confirmation", "## 负向确认")
+    .replaceAll("## Most Sensitive Names", "## 最敏感名称")
+    .replaceAll("## Ranking Logic", "## 排名逻辑")
+    .replaceAll("## Ranked Summary", "## 排名摘要")
+    .replaceAll("- Priority:", "- 优先级：")
+    .replaceAll("- Total score:", "- 综合分：")
+    .replaceAll("- Bottleneck:", "- 瓶颈：")
+    .replaceAll("- Strongest evidence:", "- 最强证据：")
+    .replaceAll("- Top names:", "- 候选名称：")
+    .replaceAll("- End system:", "- 终端系统：");
+}
+
 function renderMarkdown(text) {
-  return `<pre class="markdown">${escapeHtml(text || "暂无内容。")}</pre>`;
+  return `<pre class="markdown">${escapeHtml(localizeMarkdown(text || "暂无内容。"))}</pre>`;
 }
 
 function getPack() {
@@ -106,7 +161,7 @@ function renderSummary() {
     const top = lanes[0];
     summary.innerHTML = `
       <div class="summaryCard"><span>模式</span><strong>方向比较</strong><em>${lanes.length} 条赛道</em></div>
-      <div class="summaryCard"><span>第一优先级</span><strong>${escapeHtml(top?.lane || "-")}</strong><em>${escapeHtml(top?.priority || "")}</em></div>
+      <div class="summaryCard"><span>第一优先级</span><strong>${escapeHtml(top?.lane || "-")}</strong><em>${escapeHtml(priorityLabels[top?.priority] || top?.priority || "")}</em></div>
       <div class="summaryCard"><span>最高综合分</span><strong>${Number(top?.lane_score?.total_average || 0).toFixed(2)}</strong><em>满分 5</em></div>
       <div class="summaryCard"><span>候选名称</span><strong>${escapeHtml((top?.top_names || []).join(", ") || "-")}</strong><em>Top names</em></div>
     `;
@@ -118,7 +173,7 @@ function renderSummary() {
   const graph = lastResult.graph || {};
   summary.innerHTML = `
     <div class="summaryCard"><span>赛道</span><strong>${escapeHtml(pack?.thesis?.lane || "-")}</strong><em>${escapeHtml(pack?.meta?.title || "")}</em></div>
-    <div class="summaryCard"><span>优先级</span><strong>${escapeHtml(pack?.lane_priority || getScorecard()?.lane?.priority || "-")}</strong><em>综合分 ${Number(laneScores.total_average || 0).toFixed(2)} / 5</em></div>
+    <div class="summaryCard"><span>优先级</span><strong>${escapeHtml(priorityLabels[pack?.lane_priority] || priorityLabels[getScorecard()?.lane?.priority] || pack?.lane_priority || getScorecard()?.lane?.priority || "-")}</strong><em>综合分 ${Number(laneScores.total_average || 0).toFixed(2)} / 5</em></div>
     <div class="summaryCard"><span>证据</span><strong>${getEvidence().length}</strong><em>按强度排序</em></div>
     <div class="summaryCard"><span>图谱</span><strong>${graph.nodes?.length || 0} 节点</strong><em>${graph.edges?.length || 0} 条关系</em></div>
   `;
@@ -238,10 +293,11 @@ function renderEvidence() {
           ${evidence
             .map((item) => {
               const label = item.label || item.tier || "Needs verification";
+              const labelText = evidenceLabels[label] || label;
               const badgeClass = label === "Confirmed" ? "" : label === "Inferred" ? "warn" : "danger";
               return `
                 <tr>
-                  <td><span class="badge ${badgeClass}">${escapeHtml(label)}</span></td>
+                  <td><span class="badge ${badgeClass}">${escapeHtml(labelText)}</span></td>
                   <td>${escapeHtml(item.entity)}</td>
                   <td>${escapeHtml(item.title)}</td>
                   <td>${escapeHtml(item.summary)}</td>
@@ -365,9 +421,11 @@ modeEl.addEventListener("change", () => {
   lastResult = null;
   activeTab = "overview";
   tabs.forEach((item) => item.classList.toggle("active", item.dataset.tab === "overview"));
+  updateModeGuide();
   renderSummary();
   loadSample().then(buildPack);
 });
 
+updateModeGuide();
 renderSummary();
 loadSample().then(buildPack);
