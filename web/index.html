@@ -7,13 +7,35 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <div>
-        <h1>Chokepoint Atlas Studio</h1>
-        <p>把供应链方向 JSON 转成研究包、评分卡、证据备忘录和图谱。</p>
-      </div>
-      <div class="actions">
-        <label class="modePicker" for="mode">
+    <div class="appShell">
+      <header class="hero">
+        <div class="heroCopy">
+          <span class="eyebrow">Chokepoint Atlas 2.0</span>
+          <h1>AI 基建瓶颈研究工作台</h1>
+          <p>把供应链方向 JSON 转成可复盘的研究包：证据分层、关系图谱、评分卡、催化剂跟踪和多赛道比较。</p>
+        </div>
+        <div class="heroPanel" aria-label="2.0 模块状态">
+          <div class="moduleItem ready">
+            <strong>Evidence</strong>
+            <span>证据分层</span>
+          </div>
+          <div class="moduleItem ready">
+            <strong>Graph</strong>
+            <span>关系图谱</span>
+          </div>
+          <div class="moduleItem ready">
+            <strong>Scoring</strong>
+            <span>优先级评分</span>
+          </div>
+          <div class="moduleItem ready">
+            <strong>Output</strong>
+            <span>研究包输出</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="toolbar" aria-label="运行控制">
+        <label class="field" for="mode">
           <span>模式</span>
           <select id="mode">
             <option value="pack">研究包</option>
@@ -22,30 +44,35 @@
           </select>
         </label>
         <button id="loadSample">加载示例</button>
-        <button id="buildPack" class="primary">运行</button>
-      </div>
-    </header>
-
-    <main class="workspace">
-      <section class="editor">
-        <div class="panelHeader">
-          <h2>输入 JSON</h2>
-          <span id="status">就绪</span>
-        </div>
-        <textarea id="inputJson" spellcheck="false"></textarea>
+        <button id="buildPack" class="primary">运行分析</button>
+        <span id="status" class="status ready">就绪</span>
       </section>
 
-      <section class="results">
-        <nav class="tabs" aria-label="结果标签">
-          <button class="tab active" data-tab="quick">快速扫描</button>
-          <button class="tab" data-tab="memo">证据备忘录</button>
-          <button class="tab" data-tab="score">评分卡</button>
-          <button class="tab" data-tab="graph">图谱</button>
-          <button class="tab" data-tab="json">JSON</button>
-        </nav>
-        <pre id="output"></pre>
-      </section>
-    </main>
+      <main class="workspace">
+        <section class="editor panel">
+          <div class="panelHeader">
+            <div>
+              <h2>输入 JSON</h2>
+              <p>保留原始 JSON 编辑能力，适合直接调试 2.0 数据结构。</p>
+            </div>
+          </div>
+          <textarea id="inputJson" spellcheck="false"></textarea>
+        </section>
+
+        <section class="results panel">
+          <div id="summary" class="summaryGrid" aria-live="polite"></div>
+          <nav class="tabs" aria-label="结果标签">
+            <button class="tab active" data-tab="overview">总览</button>
+            <button class="tab" data-tab="memo">备忘录</button>
+            <button class="tab" data-tab="evidence">证据</button>
+            <button class="tab" data-tab="score">评分</button>
+            <button class="tab" data-tab="graph">图谱</button>
+            <button class="tab" data-tab="json">JSON</button>
+          </nav>
+          <div id="output" class="outputSurface"></div>
+        </section>
+      </main>
+    </div>
 
     <script src="/app.js"></script>
   </body>

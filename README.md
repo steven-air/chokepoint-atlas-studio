@@ -99,7 +99,7 @@ Web Studio 默认中文界面，支持三种模式：
 - 方向比较：多条方向比较
 - 资料流水线：从松散资料包生成 draft，再生成最终研究包
 
-界面会加载示例 JSON，也可以直接粘贴自己的 JSON，然后点 `运行` 预览结果。
+界面会加载示例 JSON，也可以直接粘贴自己的 JSON，然后点 `运行` 预览结果。当前网页已经整合 2.0 的核心展示层：总览卡片、证据分层表、评分条、候选公司表、图谱统计、Mermaid 图谱预览和原始 JSON。
 
 ## 二开优化内容
 
@@ -109,8 +109,10 @@ Web Studio 默认中文界面，支持三种模式：
 - 统一 CLI：`init`、`build`、`compare`、`pipeline`、`studio`
 - 无依赖 Web Studio
 - 默认中文 README 和中文 Web 界面
+- 2.0 网页工作台：Evidence / Graph / Scoring / Output 展示层
 - 安装文档 `INSTALL.md`
 - 优化评审文档 `docs/OPTIMIZATION_REVIEW.md`
+- 2.0 易实现功能评估 `docs/V2_IMPLEMENTATION_NOTES_CN.md`
 
 ## 后续可以继续优化
 

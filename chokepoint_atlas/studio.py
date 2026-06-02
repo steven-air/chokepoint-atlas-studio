@@ -38,6 +38,7 @@ def build_pack_payload(data: dict) -> dict:
             "validation": bundle["validation"],
             "research_pack": bundle["research_pack"],
             "scorecard": bundle["scorecard"],
+            "graph": bundle["graph"],
             "quick_scan": render_quick_scan(data, bundle["evidence"], bundle["lane_scores"]),
             "evidence_memo": render_evidence_memo(
                 data,
@@ -118,6 +119,7 @@ def pipeline_payload(data: dict) -> dict:
             "validation": bundle["validation"],
             "research_pack": bundle["research_pack"],
             "scorecard": bundle["scorecard"],
+            "graph": bundle["graph"],
             "quick_scan": render_quick_scan(draft_pack, bundle["evidence"], bundle["lane_scores"]),
             "evidence_memo": render_evidence_memo(
                 draft_pack,
