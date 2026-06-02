@@ -27,17 +27,17 @@
 body[data-theme="neon"] {
   --bg: #080712;
   --bg-grid: rgba(255, 215, 64, 0.08);
-  --panel: rgba(16, 14, 31, 0.93);
-  --panel-solid: #151228;
-  --panel-soft: rgba(28, 22, 52, 0.9);
-  --panel-raised: rgba(34, 27, 64, 0.96);
-  --border: rgba(255, 218, 78, 0.28);
-  --border-strong: rgba(255, 218, 78, 0.64);
+  --panel: rgba(5, 18, 34, 0.94);
+  --panel-solid: #071629;
+  --panel-soft: rgba(10, 29, 52, 0.92);
+  --panel-raised: rgba(8, 26, 48, 0.97);
+  --border: rgba(58, 190, 255, 0.35);
+  --border-strong: rgba(255, 218, 78, 0.72);
   --text: #fff8dc;
-  --muted: #c9bca1;
-  --muted-2: #9c8d74;
-  --accent: #ffd53d;
-  --accent-2: #ff4f9a;
+  --muted: #b9d5ee;
+  --muted-2: #85a8c7;
+  --accent: #ffe236;
+  --accent-2: #35c9ff;
   --accent-3: #9c6bff;
   --accent-ink: #fff5bf;
   --accent-soft: rgba(255, 213, 61, 0.16);
@@ -155,6 +155,17 @@ body {
   min-height: 100%;
 }
 
+body[data-theme="neon"] {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(47, 126, 255, 0.28), transparent 32%),
+    radial-gradient(circle at 78% 0%, rgba(255, 226, 54, 0.16), transparent 28%),
+    radial-gradient(circle at 92% 56%, rgba(180, 108, 255, 0.14), transparent 26%),
+    linear-gradient(var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px),
+    var(--bg);
+  background-size: auto, auto, auto, 36px 36px, 36px 36px, auto;
+}
+
 body {
   margin: 0;
   background:
@@ -179,6 +190,34 @@ textarea {
   width: min(1680px, 100%);
   margin: 0 auto;
   padding: 24px;
+}
+
+.terminalTicker {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.terminalTicker span {
+  display: flex;
+  align-items: center;
+  min-height: 34px;
+  background: rgba(5, 14, 27, 0.92);
+  color: var(--accent);
+  padding: 0 12px;
+  font: 800 12px/1 "Cascadia Mono", Consolas, monospace;
+  white-space: nowrap;
+}
+
+body[data-theme="daylight"] .terminalTicker span {
+  background: #ffffff;
+  color: var(--accent-ink);
 }
 
 .hero {
@@ -206,6 +245,15 @@ textarea {
   padding: 32px;
   background:
     linear-gradient(135deg, rgba(37, 214, 200, 0.16), rgba(105, 167, 255, 0.1) 42%, rgba(179, 137, 255, 0.09)),
+    var(--panel);
+}
+
+body[data-theme="neon"] .heroCopy {
+  border-color: rgba(58, 190, 255, 0.52);
+  background:
+    linear-gradient(90deg, rgba(4, 12, 24, 0.58), rgba(8, 25, 48, 0.92)),
+    radial-gradient(circle at 12% 20%, rgba(53, 201, 255, 0.18), transparent 38%),
+    radial-gradient(circle at 90% 12%, rgba(255, 226, 54, 0.16), transparent 30%),
     var(--panel);
 }
 
@@ -254,6 +302,13 @@ h1 {
   text-shadow: 0 0 28px rgba(105, 167, 255, 0.28);
 }
 
+body[data-theme="neon"] h1 {
+  color: var(--accent);
+  font-size: 48px;
+  font-weight: 950;
+  text-shadow: 0 0 28px rgba(255, 226, 54, 0.32), 0 0 40px rgba(53, 201, 255, 0.22);
+}
+
 h2 {
   font-size: 16px;
   line-height: 1.35;
@@ -299,6 +354,19 @@ p {
   padding: 16px;
 }
 
+.strategyPanel {
+  position: relative;
+}
+
+.strategyHeader {
+  grid-column: 1 / -1;
+  min-height: 30px;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 950;
+  text-align: center;
+}
+
 .moduleItem {
   min-height: 112px;
   border: 1px solid var(--border);
@@ -307,6 +375,25 @@ p {
     linear-gradient(135deg, rgba(37, 214, 200, 0.11), rgba(105, 167, 255, 0.07)),
     var(--panel-soft);
   padding: 14px;
+}
+
+body[data-theme="neon"] .moduleItem {
+  border-color: rgba(58, 190, 255, 0.44);
+  background:
+    linear-gradient(135deg, rgba(53, 201, 255, 0.16), rgba(255, 226, 54, 0.08)),
+    rgba(5, 17, 32, 0.94);
+}
+
+body[data-theme="neon"] .moduleItem:nth-child(3) {
+  border-color: rgba(60, 235, 145, 0.48);
+}
+
+body[data-theme="neon"] .moduleItem:nth-child(4) {
+  border-color: rgba(255, 226, 54, 0.58);
+}
+
+body[data-theme="neon"] .moduleItem:nth-child(5) {
+  border-color: rgba(180, 108, 255, 0.58);
 }
 
 .moduleItem strong {
@@ -327,14 +414,16 @@ body[data-theme="daylight"] .moduleItem strong {
   line-height: 1.55;
 }
 
-.exhibitStrip {
+.exhibitStrip,
+.modeDeck {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin-bottom: 16px;
 }
 
-.exhibitCard {
+.exhibitCard,
+.modeCard {
   min-height: 152px;
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -343,9 +432,25 @@ body[data-theme="daylight"] .moduleItem strong {
     var(--panel);
   box-shadow: var(--shadow);
   padding: 16px;
+  color: var(--text);
+  text-align: left;
 }
 
-.exhibitCard span {
+.modeCard {
+  cursor: pointer;
+}
+
+.modeCard.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(255, 226, 54, 0.26), 0 18px 52px rgba(255, 226, 54, 0.12);
+}
+
+.modeCard.locked {
+  cursor: default;
+}
+
+.exhibitCard span,
+.modeCard span {
   display: inline-flex;
   align-items: center;
   min-height: 26px;
@@ -358,26 +463,31 @@ body[data-theme="daylight"] .moduleItem strong {
 }
 
 .exhibitCard:nth-child(2) span,
-.exhibitCard:nth-child(2) {
+.exhibitCard:nth-child(2),
+.modeCard:nth-child(2) {
   border-color: rgba(105, 167, 255, 0.42);
 }
 
 .exhibitCard:nth-child(3) span,
-.exhibitCard:nth-child(3) {
+.exhibitCard:nth-child(3),
+.modeCard:nth-child(3) {
   border-color: rgba(179, 137, 255, 0.42);
 }
 
 .exhibitCard:nth-child(4) span,
-.exhibitCard:nth-child(4) {
+.exhibitCard:nth-child(4),
+.modeCard:nth-child(4) {
   border-color: rgba(255, 213, 61, 0.36);
 }
 
-.exhibitCard h2 {
+.exhibitCard h2,
+.modeCard h2 {
   margin-top: 14px;
   font-size: 17px;
 }
 
-.exhibitCard p {
+.exhibitCard p,
+.modeCard p {
   margin-top: 8px;
   font-size: 13px;
 }
@@ -447,6 +557,10 @@ button.primary:hover,
 button.active:hover {
   background: linear-gradient(135deg, #57fff1, #8abfff);
   color: #04111f;
+}
+
+.modeCard.active:hover {
+  color: var(--text);
 }
 
 .status {
@@ -536,6 +650,10 @@ textarea {
   padding: 14px;
 }
 
+body[data-theme="neon"] .summaryCard strong {
+  color: var(--accent);
+}
+
 .summaryCard span {
   display: block;
   color: var(--muted);
@@ -609,6 +727,11 @@ textarea {
   border-radius: 8px;
   background: var(--panel-raised);
   padding: 16px;
+}
+
+body[data-theme="neon"] .contentCard,
+body[data-theme="neon"] .tableCard {
+  border-color: rgba(58, 190, 255, 0.32);
 }
 
 .graphViewer {
@@ -792,6 +915,10 @@ tbody tr:hover {
     grid-template-columns: 1fr;
   }
 
+  .terminalTicker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   textarea,
   .outputSurface {
     min-height: 520px;
@@ -813,6 +940,7 @@ tbody tr:hover {
 
   .heroPanel,
   .exhibitStrip,
+  .modeDeck,
   .summaryGrid,
   .contentGrid,
   .graphStats {

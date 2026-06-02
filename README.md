@@ -117,7 +117,8 @@ Web Studio 默认中文界面，当前采用“科技馆模式”视觉：深色
 - 默认中文 README 和中文 Web 界面
 - 2.0 网页工作台：Evidence / Graph / Scoring / Output 展示层
 - 中文 Web 示例：研究包、方向比较、资料流水线
-- UI 主题切换：蓝色科技馆 / 霓虹投资屏 / 明亮研究台
+- UI 主题切换：蓝色科技馆 / 霓虹投资屏 / 明亮研究台，默认采用霓虹投资屏
+- 模式卡片切换：研究包 / 方向比较 / 资料流水线可直接点击切换
 - Graph Viewer：节点展区、关键关系表、Mermaid 源码
 - 安装文档 `INSTALL.md`
 - 优化评审文档 `docs/OPTIMIZATION_REVIEW.md`

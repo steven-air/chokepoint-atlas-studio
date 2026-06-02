@@ -8,11 +8,20 @@
   </head>
   <body>
     <div class="appShell">
+      <section class="terminalTicker" aria-label="系统状态">
+        <span>CHOKEPOINT ATLAS 2.0</span>
+        <span>AI 基建瓶颈扫描</span>
+        <span>证据分层 ONLINE</span>
+        <span>图谱引擎 ONLINE</span>
+        <span>评分系统 ONLINE</span>
+        <span>本地 Web Studio</span>
+      </section>
+
       <header class="hero">
         <div class="heroCopy">
-          <span class="eyebrow">Chokepoint Atlas 2.0 · 科技馆模式</span>
-          <h1>AI 基建瓶颈研究展厅</h1>
-          <p>像参观一座产业科技馆一样拆解 AI 基建：从终端系统进入供应链展区，定位瓶颈层，查看证据强度、关系图谱、评分卡和催化剂。</p>
+          <span class="eyebrow">SERENITY-STYLE BOTTLENECK ATLAS</span>
+          <h1>AI 基建瓶颈研究中枢</h1>
+          <p>从“热门叙事”进入真实供应链：先拆终端系统，再锁定瓶颈层，用证据、图谱、评分和催化剂判断哪条线值得继续深挖。</p>
           <div class="heroBadges" aria-label="核心功能">
             <span>全中文界面</span>
             <span>本地运行</span>
@@ -20,43 +29,44 @@
             <span>保留 JSON 调试</span>
           </div>
         </div>
-        <div class="heroPanel" aria-label="2.0 模块状态">
+        <div class="heroPanel strategyPanel" aria-label="投资逻辑框架">
+          <div class="strategyHeader">投资逻辑框架</div>
           <div class="moduleItem ready">
-            <strong>证据舱</strong>
-            <span>把财报、新闻、资料按强度分层，不再混着看。</span>
+            <strong>01 深度研究供应链</strong>
+            <span>从材料、设备、器件、模组到系统，找到最容易被忽视的环节。</span>
           </div>
           <div class="moduleItem ready">
-            <strong>图谱厅</strong>
-            <span>把公司、部件、证据、催化剂连成可复用关系。</span>
+            <strong>02 锁定瓶颈企业</strong>
+            <span>寻找技术领先、供给紧、市场认知不足的执行者。</span>
           </div>
           <div class="moduleItem ready">
-            <strong>评分台</strong>
-            <span>用五个维度比较赛道和候选公司优先级。</span>
+            <strong>03 判断催化剂</strong>
+            <span>订单、认证、产能、行业加速和资金轮动共同验证。</span>
           </div>
           <div class="moduleItem ready">
-            <strong>输出馆</strong>
-            <span>同时生成总览、备忘录、图谱、评分和 JSON。</span>
+            <strong>04 重仓 + 长期持有</strong>
+            <span>不是追热点，而是跟踪被低估的高确定性瓶颈。</span>
           </div>
         </div>
       </header>
 
-      <section class="exhibitStrip" aria-label="功能介绍">
-        <article class="exhibitCard">
+      <section class="modeDeck" aria-label="模式切换卡片">
+        <button class="modeCard active" data-mode-card="pack">
           <span>01</span>
           <h2>研究包</h2>
           <p>输入单条赛道 JSON，生成 Quick Scan、证据备忘录、评分卡、关系图谱和催化剂观察。</p>
-        </article>
-        <article class="exhibitCard">
+        </button>
+        <button class="modeCard" data-mode-card="compare">
           <span>02</span>
           <h2>方向比较</h2>
           <p>把多条赛道放在同一张排名表里，用统一评分判断下一步研究优先级。</p>
-        </article>
-        <article class="exhibitCard">
+        </button>
+        <button class="modeCard" data-mode-card="pipeline">
           <span>03</span>
           <h2>资料流水线</h2>
           <p>从松散资料包生成 draft，再进入最终研究包，适合把外部材料沉淀成结构化结果。</p>
-        </article>
-        <article class="exhibitCard">
+        </button>
+        <article class="modeCard locked">
           <span>04</span>
           <h2>原始数据舱</h2>
           <p>保留完整 JSON 编辑和原始结果查看，方便二开、调试和接入其他 Agent。</p>

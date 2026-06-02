@@ -5,6 +5,7 @@ const statusEl = document.querySelector("#status");
 const modeEl = document.querySelector("#mode");
 const themeEl = document.querySelector("#theme");
 const tabs = [...document.querySelectorAll(".tab")];
+const modeCards = [...document.querySelectorAll("[data-mode-card]")];
 
 let lastResult = null;
 let activeTab = "overview";
@@ -78,6 +79,7 @@ function setStatus(text, kind = "ready") {
 function updateModeGuide() {
   const guide = document.querySelector("#modeGuide");
   if (guide) guide.textContent = modeGuides[modeEl.value] || "";
+  modeCards.forEach((card) => card.classList.toggle("active", card.dataset.modeCard === modeEl.value));
 }
 
 function applyTheme(value) {
@@ -493,6 +495,12 @@ tabs.forEach((tab) => {
 document.querySelector("#loadSample").addEventListener("click", loadSample);
 document.querySelector("#buildPack").addEventListener("click", buildPack);
 themeEl.addEventListener("change", () => applyTheme(themeEl.value));
+modeCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    modeEl.value = card.dataset.modeCard;
+    modeEl.dispatchEvent(new Event("change"));
+  });
+});
 modeEl.addEventListener("change", () => {
   lastResult = null;
   activeTab = "overview";
